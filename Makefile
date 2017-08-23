@@ -3,11 +3,17 @@ BINARY := vim-ver
 DARWIN_AMD64_BUILD := $(BUILD)/darwin-amd64
 LINUX_AMD64_BUILD := $(BUILD)/linux-amd64
 
-all: $(DARWIN_AMD64_BUILD)/$(BINARY) $(LINUX_AMD64_BUILD)/$(BINARY)
+all: $(DARWIN_AMD64_BUILD).tar.gz $(LINUX_AMD64_BUILD).tar.gz
+
+$(DARWIN_AMD64_BUILD).tar.gz: $(DARWIN_AMD64_BUILD)/$(BINARY)
+	tar czf $@ $<
 
 $(DARWIN_AMD64_BUILD)/$(BINARY):
 	mkdir -p $(dir $@)
 	go build -o $@
+
+$(LINUX_AMD64_BUILD).tar.gz: $(LINUX_AMD64_BUILD)/$(BINARY)
+	tar czf $@ $<
 
 $(LINUX_AMD64_BUILD)/$(BINARY):
 	mkdir -p $(dir $@)

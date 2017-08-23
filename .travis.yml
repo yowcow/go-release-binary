@@ -6,3 +6,14 @@ go:
 script:
   - make
   - make test
+
+deploy:
+  provider: releases
+  api_key:
+    secure: o2nMhOlGTE0TEo5+5tBKx1bSJ/hXUjHuk77HcCyx/o0t/SdKrNmDh3hzP8rmV5rz8IdMq0dI6BxlIYO2Z59vj9Ivjy9tijCTfsrV3i5LJa1y1OjKfeSW8ujTp3iUt2OZySfywbHceJ2UM1JqjlPxW55iInV2CqDUmSK5zR97vFXOgSVOLmA8u/4qN5kgEApOPhe5sHd8thM0BWbzvvJWwyn/kGDLdoIfzHjrL9MIhdkBwglLUfYpz1iZd5Qe7RqjxT+Qk6xpKvswg8/eOp1KaAiLb1NxM0654QIBPuAOShcukLzviaqn0pYdknHXMmsTljnbvVML4eoMG/Uufr/xDr/fE3DrCljk51cexVfX7u9xmTzOn4RfVWRXcBgp+lqycxFu+nwxvkvMhlQNp0mifusHIxKIITXxR4OyEJq7HhAkvxDh0tHAX/d7GgHyBJU2ZAN738wiSkGiYLg1gGS4jJEoks+boHsuwOPy6NcyERjmY/ckFFpeiOudfL6kL0blLQTIutOccqstJFx+rWmILQrRVIP9+gWJYZe/otKnQg2phZs1reVCov79S2ODVnl5PRdUxc4pYIIlkeZyJD+2LibEjgNlIz58AHgw2UYYuI7uP3VP+Zzd7eNnTBzRW5IHNrDOdJ6U/+WWgZtn37j3hjuDiweRt9a92o/Fzwi67Sk=
+  file:
+    - _build/darwin-amd64.tar.gz
+    - _build/linux-amd64.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
